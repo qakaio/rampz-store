@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f8f7" />
+    <title>Page not found | Rampz Store</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .not-found { min-height: 100vh; padding: 32px; display: grid; place-items: center; text-align: center; }
+      .not-found-card { max-width: 440px; }
+      .not-found-code { margin: 0 0 12px; color: #df8967; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 800; letter-spacing: .18em; }
+      .not-found h1 { margin: 0 0 12px; color: #1e4740; font-family: Manrope, sans-serif; font-size: clamp(36px, 8vw, 56px); letter-spacing: -.06em; }
+      .not-found p { margin: 0 0 24px; color: #738079; font-size: 14px; line-height: 1.7; }
+    </style>
+  </head>
+  <body>
+    <main class="not-found">
+      <section class="not-found-card" aria-labelledby="not-found-title">
+        <p class="not-found-code">404 — PAGE NOT FOUND</p>
+        <h1 id="not-found-title">This page took a wrong turn.</h1>
+        <p>The page may have moved, or the address may be incorrect. The collection is still right where you left it.</p>
+        <a class="primary-button" href="/">Back to the store <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+  </body>
+</html>

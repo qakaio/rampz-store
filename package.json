@@ -1,0 +1,21 @@
+{
+  "name": "rampz-store-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server/server.js",
+    "start": "node server/server.js",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "build": "node scripts/build.js",
+    "check": "node --check app.js && node --check server/server.js && node --check server/rules.js && node --check server/seed.js && node --check tests/api.test.js && node --check tests/rules.test.js && node --check e2e/store.spec.js && node --check playwright.config.js && node --check scripts/build.js && node --check scripts/check-openapi.js && node scripts/check-openapi.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}

@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Build production storefront
+        run: npm run build
+      - name: Check JavaScript and OpenAPI
+        run: npm run check
+      - name: Run API tests
+        run: npm test -- --test-reporter=tap > test-results.tap
+      - name: Run Playwright E2E tests
+        run: npm run test:e2e
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            test-results.tap
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f8f7" />
+    <meta
+      name="description"
+      content="Explore laboratory glassware, equipment, and educational kits at Rampz Store."
+    />
+    <title>Rampz Store | Lab essentials, made simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="announcement">
+      <span>Tools for curious minds</span>
+      <span class="announcement-detail">Free shipping on orders over R$ 500</span>
+      <a data-testid="announcement-shop-link" href="#catalog">Explore the collection <span aria-hidden="true">↗</span></a>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" data-testid="brand-home-link" href="#" aria-label="Rampz Store home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>rampz<span class="brand-light">store</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" data-testid="nav-shop-all" href="#catalog">Shop all</a>
+        <a class="nav-link" data-testid="nav-categories" href="#categories">Categories</a>
+        <a class="nav-link" data-testid="nav-our-story" href="#about">Our story</a>
+        <a class="nav-link nav-contact-link" data-testid="nav-contact" href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-box">
+          <span class="sr-only">Search products</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg>
+          <input id="header-search" data-testid="search-input" type="search" placeholder="Search the store" autocomplete="off" />
+          <kbd>/</kbd>
+        </label>
+        <button class="account-button" id="open-account" data-testid="open-account-button" type="button" aria-label="Open account">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"></circle><path d="M5.5 20c.5-3.3 2.8-5.2 6.5-5.2s6 1.9 6.5 5.2"></path></svg>
+          <span id="account-label">Account</span>
+        </button>
+        <button class="cart-button" id="open-cart" data-testid="open-cart-button" type="button" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+          <span>Bag</span>
+          <span class="cart-count" id="cart-count" data-testid="cart-count" aria-live="polite">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> EQUIPMENT FOR EVERY EXPERIMENT</p>
+          <h1 id="hero-title">A little more<br /><span>curiosity.</span></h1>
+          <p class="hero-description">
+            Thoughtful lab essentials for big ideas, first experiments, and everything in between.
+          </p>
+          <a class="primary-button hero-button" data-testid="hero-shop-button" href="#catalog">Shop the collection <span aria-hidden="true">↗</span></a>
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true"><span>R</span><span>L</span><span>S</span><span>+</span></div>
+            <p><strong>Made for the makers</strong><br /><span>Trusted by curious people everywhere</span></p>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of laboratory glassware">
+          <div class="art-note"><span class="note-dot"></span> GOOD IDEAS START HERE</div>
+          <div class="art-circle art-circle-back"></div>
+          <div class="art-circle art-circle-front"></div>
+          <div class="glassware beaker">
+            <span class="beaker-neck"></span><span class="beaker-body"><i></i><i></i><i></i></span>
+          </div>
+          <div class="glassware flask">
+            <span class="flask-neck"></span><span class="flask-body"><i></i></span>
+          </div>
+          <div class="hero-spark spark-one">✳</div>
+          <div class="hero-spark spark-two">✳</div>
+          <div class="art-caption"><span>01 — THE ESSENTIALS</span><span>EST. FOR WHAT'S NEXT</span></div>
+          <div class="floating-label">MAKE<br />SOMETHING<br /><em>matter.</em></div>
+        </div>
+      </section>
+
+      <section class="benefit-strip" aria-label="Store benefits">
+        <div><span class="benefit-icon">01</span><span>Curated for discovery</span></div>
+        <div><span class="benefit-icon">02</span><span>Quality you can count on</span></div>
+        <div><span class="benefit-icon">03</span><span>Ready for your next idea</span></div>
+        <div><span class="benefit-icon">04</span><span>Made for learning together</span></div>
+      </section>
+
+      <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span> THE GOOD STUFF</p>
+            <h2 id="catalog-title">Find your next <span>favorite.</span></h2>
+          </div>
+          <p class="section-aside">Useful things for the questions<br />you haven't asked yet.</p>
+        </div>
+
+        <div class="catalog-layout" id="categories">
+          <aside class="filters" aria-label="Product filters">
+            <div class="filter-heading"><h3>Explore</h3><button id="clear-filters" data-testid="clear-filters-button" type="button">Clear all</button></div>
+            <div class="filter-group">
+              <h4>Categories</h4>
+              <div id="category-filters" class="category-filters" data-testid="category-filters"></div>
+            </div>
+            <div class="filter-group price-filter">
+              <h4>Price range <span>(R$)</span></h4>
+              <div class="price-inputs">
+                <label><span>Min</span><input id="min-price" data-testid="min-price-filter" type="number" min="0" placeholder="0" /></label>
+                <span class="price-dash">—</span>
+                <label><span>Max</span><input id="max-price" data-testid="max-price-filter" type="number" min="0" placeholder="Any" /></label>
+              </div>
+            </div>
+            <label class="stock-filter"><input id="in-stock" data-testid="in-stock-filter" type="checkbox" /><span class="checkmark"></span><span>In stock only</span></label>
+            <div class="filter-note"><span>✳</span><p>Small tools.<br /><strong>Big possibilities.</strong></p></div>
+          </aside>
+
+          <div class="product-area">
+            <div class="catalog-toolbar">
+              <p id="results-count" aria-live="polite"></p>
+              <div class="sort-control"><label for="sort-products">Sort by</label><select id="sort-products" data-testid="sort-products">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="newest">Newest</option>
+              </select></div>
+            </div>
+            <div class="active-filters" id="active-filters"></div>
+            <div class="product-grid" id="product-grid" data-testid="product-grid"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <span class="empty-mark">?</span><h3>No matches this time</h3>
+              <p>Try another search or clear a filter to see more of the collection.</p>
+              <button class="text-button" id="empty-clear" data-testid="empty-clear-filters-button" type="button">Clear filters <span aria-hidden="true">↗</span></button>
+            </div>
+            <nav class="pagination" id="pagination" aria-label="Product pages"></nav>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section" id="about">
+        <div class="story-star" aria-hidden="true">✳</div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> HERE FOR THE WHAT-IFS</p>
+        <h2>Because the best<br />ideas start with <em>why?</em></h2>
+        <p>We bring together the everyday essentials that make learning, testing, and trying something new feel a little more possible.</p>
+        <a class="story-link" data-testid="story-shop-link" href="#catalog">Find your first tool <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> WE'RE ALL EARS</p>
+          <h2 id="contact-title">Got a good<br /><em>question?</em></h2>
+          <p>Tell us what's on your mind. This demo form validates your message locally; it doesn't send or store personal information.</p>
+          <span class="contact-decoration" aria-hidden="true">✳</span>
+        </div>
+        <form class="contact-form" id="contact-form" data-testid="contact-form">
+          <label class="contact-field">Your name<input name="name" data-testid="contact-name-input" required maxlength="100" autocomplete="name" placeholder="Alex Example" /></label>
+          <label class="contact-field">Email address<input name="email" data-testid="contact-email-input" type="email" required maxlength="150" autocomplete="email" placeholder="alex@example.test" /></label>
+          <label class="contact-field">Subject<input name="subject" data-testid="contact-subject-input" required maxlength="120" placeholder="What's this about?" /></label>
+          <label class="contact-field">Your message<textarea name="message" data-testid="contact-message-input" required minlength="20" maxlength="2000" rows="4" placeholder="Share a little more detail (at least 20 characters)."></textarea></label>
+          <p class="contact-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
+          <button class="primary-button" type="submit" data-testid="contact-submit-button">Send demo message <span aria-hidden="true">↗</span></button>
+          <span class="contact-demo-note">Demo only · no message will be sent</span>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" data-testid="footer-brand-home-link" href="#" aria-label="Rampz Store home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>rampz<span class="brand-light">store</span></span>
+      </a>
+      <p>For learning, making, and figuring it out.</p>
+      <span class="footer-note">A fictional store for QA practice · All orders are simulated</span>
+      <a class="footer-contact" data-testid="footer-contact-link" href="#contact">Get in touch ↗</a>
+    </footer>
+
+    <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-modal="true" role="dialog" aria-hidden="true" inert>
+      <div class="drawer-header"><div><p class="eyebrow">YOUR LITTLE LINEUP</p><h2 id="cart-title">Your bag <span id="drawer-count">(0)</span></h2></div><button class="icon-button" id="close-cart" data-testid="close-cart-button" type="button" aria-label="Close shopping bag">×</button></div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-empty" id="cart-empty"><span class="empty-mark">＋</span><h3>Your bag is taking a break.</h3><p>There's plenty of room for a new idea.</p>      <button class="text-button" id="continue-shopping" data-testid="continue-shopping-button" type="button">Keep exploring <span aria-hidden="true">↗</span></button></div>
+      <div class="cart-summary" id="cart-summary">
+        <div class="subtotal-row"><span>Subtotal</span><strong id="cart-subtotal" data-testid="cart-subtotal">R$ 0,00</strong></div>
+        <p>Shipping calculated at checkout.</p>
+        <button class="primary-button checkout-button" id="checkout-button" data-testid="checkout-button" type="button">Continue to checkout <span aria-hidden="true">↗</span></button>
+        <span class="simulation-note">For demo purposes — no real payment is collected.</span>
+      </div>
+    </aside>
+
+    <dialog class="product-dialog" id="product-dialog" aria-labelledby="dialog-title">
+      <button class="icon-button dialog-close" id="close-product-dialog" data-testid="close-product-details-button" type="button" aria-label="Close product details">×</button>
+      <div id="product-dialog-content"></div>
+    </dialog>
+
+    <dialog class="checkout-dialog" id="checkout-dialog" aria-labelledby="checkout-title">
+      <div id="checkout-content"></div>
+    </dialog>
+
+    <dialog class="account-dialog" id="account-dialog" aria-labelledby="account-title">
+      <div id="account-content"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
