@@ -1,3 +1,5 @@
+import { catalog } from "./catalog.js";
+
 const products = [];
 const productSeedStock = new Map();
 const categoryOrder = [];
@@ -2240,6 +2242,12 @@ window.setInterval(() => {
 }, 30_000);
 
 async function loadCatalogFromApi() {
+  if (location.hostname.endsWith(".github.io")) {
+    categoryOrder.splice(0, categoryOrder.length, ...catalog.categories);
+    products.splice(0, products.length, ...catalog.products);
+    return;
+  }
+
   const [categoriesResponse, firstProductsResponse] = await Promise.all([
     fetch("/api/v1/categories"),
     fetch("/api/v1/products?limit=100"),

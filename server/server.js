@@ -14,7 +14,7 @@ const contentTypes = new Map([
   [".json", "application/json; charset=utf-8"],
   [".svg", "image/svg+xml"],
 ]);
-const publicFiles = new Set(["index.html", "app.js", "styles.css", "openapi.json", "404.html"]);
+const publicFiles = new Set(["index.html", "app.js", "catalog.js", "styles.css", "favicon.svg", "openapi.json", "404.html"]);
 const writeRateLimit = { maxRequests: 60, windowMs: 60_000 };
 const writeRequestCounts = new Map();
 let nextRateLimitCleanup = 0;

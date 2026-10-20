@@ -29,6 +29,7 @@ examples.
 ## Project structure
 
 - `index.html`, `app.js`, and `styles.css` are the vanilla-JavaScript frontend.
+- `catalog.js` is the shared catalog seed used by the API and static storefront.
 - `server/` contains the local HTTP server, deterministic in-memory seed, and
   pure business rules.
 - `tests/` contains API integration/unit tests; `e2e/` contains Playwright browser tests.
@@ -75,6 +76,11 @@ and OpenAPI document into `dist/`, which is served in production mode. The
 demo API remains in-memory and local-only; the static build does not turn it
 into a real store or make it suitable for public deployment. `npm run build`
 can be run again to refresh the copied files.
+
+GitHub Pages serves the storefront without the Node.js API. On `github.io`
+domains, the catalog loads from the shared static seed instead of requesting
+the unavailable API endpoints. API-backed checkout coupon and shipping
+calculations still require the local demo server.
 
 ## API utilities
 

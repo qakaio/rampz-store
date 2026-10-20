@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const outputDirectory = resolve(projectRoot, "dist");
-const publicFiles = ["index.html", "app.js", "styles.css", "404.html", "openapi.json"];
+const publicFiles = ["index.html", "app.js", "catalog.js", "styles.css", "404.html", "favicon.svg", "openapi.json"];
 
 await mkdir(outputDirectory, { recursive: true });
 await Promise.all(publicFiles.map((file) => copyFile(

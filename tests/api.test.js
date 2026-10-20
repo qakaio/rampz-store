@@ -109,6 +109,18 @@ test("API and static responses include security headers", async () => {
   }
 });
 
+test("static catalog module and favicon are served", async () => {
+  const catalogResponse = await fetch(`${baseUrl}/catalog.js`);
+  assert.equal(catalogResponse.status, 200);
+  assert.match(catalogResponse.headers.get("content-type"), /javascript/);
+  assert.match(await catalogResponse.text(), /export const catalog/);
+
+  const faviconResponse = await fetch(`${baseUrl}/favicon.svg`);
+  assert.equal(faviconResponse.status, 200);
+  assert.match(faviconResponse.headers.get("content-type"), /image\/svg\+xml/);
+  assert.match(await faviconResponse.text(), /<svg/);
+});
+
 test("test reset restores deterministic seed counts", async () => {
   const response = await fetch(`${baseUrl}/api/v1/test/reset`, { method: "POST" });
   assert.equal(response.status, 200);
