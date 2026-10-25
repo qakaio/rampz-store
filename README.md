@@ -148,6 +148,18 @@ payment outcomes, account, cancellation, responsive overflow, and keyboard
 search. GitHub Actions runs the same suite on Chromium. HTML reports and traces
 are written to ignored `test-results/` and `playwright-report/` directories.
 
+For the static GitHub Pages storefront, run only the browser flows that do not
+need the local API:
+
+```powershell
+npm run test:e2e:pages
+```
+
+This suite defaults to `https://qakaio.github.io/rampz-store/`. Set
+`E2E_BASE_URL` to test another deployed static storefront. Checkout shipping
+and coupon calculations require the local API and remain covered by
+`npm run test:e2e`.
+
 `npm run build` creates the production static files. `npm run check` validates
 JavaScript syntax and OpenAPI structure/references. `npm test` runs API
 integration tests and isolated unit tests for coupon and shipping rules.
