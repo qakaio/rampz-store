@@ -46,6 +46,10 @@ async function enterReview(page, method = "card", cardNumber = "4111 1111 1111 1
 test("catalog search, category, sorting, and empty state work", async ({ page }) => {
   const cards = page.locator('[data-testid^="product-card-"]');
   await expect(cards).toHaveCount(12);
+  const productImages = page.locator(".product-card .product-image");
+  await expect(productImages).toHaveCount(12);
+  await expect.poll(() => productImages.evaluateAll((images) =>
+    images.every((image) => image.complete && image.naturalWidth > 0))).toBe(true);
 
   await page.getByTestId("search-input").fill("beaker");
   await expect(page.getByTestId("product-card-3")).toBeVisible();

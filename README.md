@@ -29,9 +29,11 @@ examples.
 ## Project structure
 
 - `index.html`, `app.js`, and `styles.css` are the vanilla-JavaScript frontend.
-- `catalog.js` is the shared catalog seed used by the API and static storefront.
+- `catalog.js` is the shared catalog seed used by the API and static storefront;
+  each product references a local image in `img/`.
 - `server/` contains the local HTTP server, deterministic in-memory seed, and
   pure business rules.
+- `img/` contains the product images used by the catalog.
 - `tests/` contains API integration/unit tests; `e2e/` contains Playwright browser tests.
 - `scripts/` contains the static production build and OpenAPI validation.
 - `openapi.json` documents implemented API endpoints; `404.html` is the
@@ -111,8 +113,9 @@ geolocation disabled). JSON request bodies are limited to 16 KiB.
 Malformed percent-encoding in static paths returns `400`; paths that resolve
 outside the project root or to non-public files return a branded HTML `404`.
 Unknown `/api/...` routes continue returning JSON `404`. Static serving is
-allowlisted to the storefront, its JavaScript/CSS, the OpenAPI document and the
-404 page; project configuration and server source files are not served.
+allowlisted to the storefront, its JavaScript/CSS, the OpenAPI document, the
+404 page, and the eight catalog images in `img/`; project configuration and
+server source files are not served.
 Write requests are limited to 60 per minute per client IP and endpoint; excess
 requests receive `429` with a `Retry-After` header. Counters are in memory and
 reset when the server restarts, so production deployments need a shared limiter

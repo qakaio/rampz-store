@@ -121,6 +121,22 @@ test("static catalog module and favicon are served", async () => {
   assert.match(await faviconResponse.text(), /<svg/);
 });
 
+test("every catalog product has a served local image", async () => {
+  const response = await fetch(`${baseUrl}/api/v1/products?limit=100`);
+  assert.equal(response.status, 200);
+  const { data: products } = await response.json();
+  assert.equal(products.length, 20);
+  assert.ok(products.every((product) => typeof product.imageUrl === "string" && product.imageUrl.startsWith("img/")));
+  assert.equal(new Set(products.map((product) => product.imageUrl)).size, 8);
+
+  for (const imageUrl of new Set(products.map((product) => product.imageUrl))) {
+    const imageResponse = await fetch(new URL(imageUrl, baseUrl));
+    assert.equal(imageResponse.status, 200, imageUrl);
+    assert.match(imageResponse.headers.get("content-type"), /^image\/(?:jpeg|png)$/, imageUrl);
+    assert.ok((await imageResponse.arrayBuffer()).byteLength > 0, imageUrl);
+  }
+});
+
 test("test reset restores deterministic seed counts", async () => {
   const response = await fetch(`${baseUrl}/api/v1/test/reset`, { method: "POST" });
   assert.equal(response.status, 200);

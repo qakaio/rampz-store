@@ -9,6 +9,7 @@ const ordersStorageKey = "rampz-store-orders";
 const reviewsStorageKey = "rampz-store-reviews";
 const productsStorageKey = "rampz-store-products";
 const productSequenceStorageKey = "rampz-store-product-sequence";
+const catalogImageUrls = new Set(catalog.products.map((product) => product.imageUrl).filter(Boolean));
 const usersStorageKey = "rampz-store-users";
 const sessionStorageKey = "rampz-store-session";
 const loginAttemptsStorageKey = "rampz-store-login-attempts";
@@ -389,11 +390,12 @@ function renderProducts() {
 function productCard(product) {
   const tone = categoryTone(product.category);
   const tag = product.stock === 0 ? "Out of stock" : product.stock <= 5 ? "Low stock" : "";
+  const imageSource = product.imageDataUrl || product.imageUrl;
   return `<article class="product-card" data-testid="product-card-${product.id}" data-product-id="${product.id}">
     <div class="product-visual ${tone}" role="button" tabindex="0" data-testid="product-detail-${product.id}" data-open-product="${product.id}" aria-label="View details for ${escapeHtml(product.name)}">
       ${tag ? `<span class="visual-tag">${tag}</span>` : ""}
-      ${product.imageDataUrl
-    ? `<img class="product-image" src="${escapeHtml(product.imageDataUrl)}" alt="" />`
+      ${imageSource
+    ? `<img class="product-image" src="${escapeHtml(imageSource)}" alt="" />`
     : `<span class="visual-symbol" aria-hidden="true">${escapeHtml(product.symbol)}</span>`}
       <span class="visual-id">NO. ${String(product.id).padStart(2, "0")}</span>
     </div>
@@ -800,6 +802,9 @@ function hydrateDemoProducts() {
       || !product.symbol.trim()
       || product.symbol.length > 4
       || !isValidSpecifications(product.specifications)
+      || (product.imageUrl !== undefined
+        && product.imageUrl !== null
+        && !catalogImageUrls.has(product.imageUrl))
       || (product.imageDataUrl !== undefined
         && product.imageDataUrl !== null
         && (typeof product.imageDataUrl !== "string"
@@ -1720,8 +1725,9 @@ function renderProductDialog(product) {
     ? Object.entries(product.specifications).map(([label, value]) =>
       `<div class="product-specification"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")
     : "";
-  elements.dialogContent.innerHTML = `<div class="dialog-visual ${categoryTone(product.category)}">${product.imageDataUrl
-  ? `<img class="dialog-product-image" src="${escapeHtml(product.imageDataUrl)}" alt="" />`
+  const imageSource = product.imageDataUrl || product.imageUrl;
+  elements.dialogContent.innerHTML = `<div class="dialog-visual ${categoryTone(product.category)}">${imageSource
+  ? `<img class="dialog-product-image" src="${escapeHtml(imageSource)}" alt="" />`
   : `<span>${escapeHtml(product.symbol)}</span>`}</div>
     <p class="dialog-category">${escapeHtml(product.category)}</p>
     <h2 class="dialog-title" id="dialog-title">${escapeHtml(product.name)}</h2>
@@ -2286,6 +2292,7 @@ async function loadCatalogFromApi() {
     && typeof product.symbol === "string"
     && typeof product.description === "string"
     && isValidSpecifications(product.specifications)
+    && (product.imageUrl === undefined || catalogImageUrls.has(product.imageUrl))
     && categoriesResult.data.includes(product.category));
   if (!validProducts || catalogProducts.length !== productsResult.pagination.total) {
     throw new Error("The catalog API returned incomplete or invalid product data.");

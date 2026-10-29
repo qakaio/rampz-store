@@ -10,11 +10,23 @@ const staticRoot = process.env.NODE_ENV === "production" ? resolve(projectRoot, 
 const contentTypes = new Map([
   [".css", "text/css; charset=utf-8"],
   [".html", "text/html; charset=utf-8"],
+  [".jpeg", "image/jpeg"],
   [".js", "text/javascript; charset=utf-8"],
   [".json", "application/json; charset=utf-8"],
+  [".png", "image/png"],
   [".svg", "image/svg+xml"],
 ]);
 const publicFiles = new Set(["index.html", "app.js", "catalog.js", "styles.css", "favicon.svg", "openapi.json", "404.html"]);
+const publicImageFiles = new Set([
+  "img/item01.jpeg",
+  "img/item02.jpeg",
+  "img/item03.jpeg",
+  "img/item04.png",
+  "img/item05.png",
+  "img/item06.png",
+  "img/item07.png",
+  "img/item08.png",
+]);
 const writeRateLimit = { maxRequests: 60, windowMs: 60_000 };
 const writeRequestCounts = new Map();
 let nextRateLimitCleanup = 0;
@@ -165,7 +177,7 @@ async function serveStatic(pathname, response, method) {
     sendJson(response, 400, { error: "Invalid path encoding." }, method);
     return;
   }
-  if (!publicFiles.has(relativePath)) {
+  if (!publicFiles.has(relativePath) && !publicImageFiles.has(relativePath)) {
     await sendNotFoundPage(response, method);
     return;
   }
