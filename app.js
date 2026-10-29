@@ -1,4 +1,4 @@
-import { catalog } from "./catalog.js";
+import { catalog } from "./catalog.js?v=20261029-1";
 
 const products = [];
 const productSeedStock = new Map();
